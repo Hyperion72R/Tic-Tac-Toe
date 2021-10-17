@@ -1,5 +1,15 @@
+.board {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+}
+
 .squares {
   background: #272727;
+  min-width: 40px;
+  min-height: 40px;
+
+  align-items: center;
+  justify-content: center;
 }
 
 .X {
@@ -7,5 +17,12 @@
 }
 
 .O {
-  color: green;
+  color: white;
+}
+
+button.moves {
+  color: white;
+  background: #272727;
+  padding: 7px;
+  margin: 7px;
 }

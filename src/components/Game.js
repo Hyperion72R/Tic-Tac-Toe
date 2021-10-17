@@ -7,7 +7,7 @@ const Game = () => {
   const [stepNumber, setStepNumber] = useState(0);
   const [xIsNext, setXisNext] = useState(true);
   const winner = calculateWinner(history[stepNumber]);
-  const x0 = xIsNext ? "X" : "0";
+  const x0 = xIsNext ? "X" : "O";
 
   const handleClick = (i) => {
     const historyPoint = history.slice(0, stepNumber + 1);
@@ -22,12 +22,19 @@ const Game = () => {
     setXisNext(!xIsNext);
   };
 
+  const jumpTo = (step) => {
+    setStepNumber(step);
+    setXisNext(step % 2 === 0);
+  };
+
   const renderMoves = () =>
     history.map((_step, move) => {
       const destination = move ? `Go to move #${move}` : "Go to Start";
       return (
         <li key={move}>
-          <button onClick={() => jumpTo(move)}>{destination}</button>
+          <button className="moves" onClick={() => jumpTo(move)}>
+            {destination}
+          </button>
         </li>
       );
     });
